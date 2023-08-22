@@ -9,14 +9,16 @@ import {
 } from "./App.styled";
 
 function App() {
-  const [
-    answer,
-    // setAnswer
-  ] = useState(0);
+  const [answer, setAnswer] = useState(0);
+  const [val, setVal] = useState("");
+
+  const handleValChange = (char) => {
+    setVal((prev) => prev + char);
+  };
   return (
     <Container>
       <CalcScreen>
-        <CalcVal>6000/2+3227*2</CalcVal>
+        <CalcVal>{val}</CalcVal>
         <CalcAns>{answer === 0 ? answer : `=${answer}`}</CalcAns>
       </CalcScreen>
       <KeyPadContainer>
@@ -92,7 +94,12 @@ function App() {
             />
           </svg>
         </KeyPad> */}
-        <KeyPad>
+        <KeyPad
+          onClick={() => {
+            setVal("");
+            setAnswer(0);
+          }}
+        >
           <svg
             width="41"
             height="24"
@@ -106,7 +113,11 @@ function App() {
             />
           </svg>
         </KeyPad>
-        <KeyPad>
+        <KeyPad
+          onClick={() =>
+            setVal((prevState) => prevState.slice(0, prevState.length - 1))
+          }
+        >
           <svg
             width="22"
             height="18"
@@ -145,9 +156,9 @@ function App() {
             />
           </svg>
         </KeyPad>
-        <KeyPad>7</KeyPad>
-        <KeyPad>8</KeyPad>
-        <KeyPad>9</KeyPad>
+        <KeyPad onClick={() => handleValChange(7)}>7</KeyPad>
+        <KeyPad onClick={() => handleValChange(8)}>8</KeyPad>
+        <KeyPad onClick={() => handleValChange(9)}>9</KeyPad>
         <KeyPad style={{ backgroundColor: "#ADE2FF" }}>
           <svg
             width="14"
@@ -162,9 +173,9 @@ function App() {
             />
           </svg>
         </KeyPad>
-        <KeyPad>4</KeyPad>
-        <KeyPad>5</KeyPad>
-        <KeyPad>6</KeyPad>
+        <KeyPad onClick={() => handleValChange(4)}>4</KeyPad>
+        <KeyPad onClick={() => handleValChange(5)}>5</KeyPad>
+        <KeyPad onClick={() => handleValChange(6)}>6</KeyPad>
         <KeyPad style={{ backgroundColor: "#ADE2FF" }}>
           <svg
             width="17"
@@ -179,10 +190,13 @@ function App() {
             />
           </svg>
         </KeyPad>
-        <KeyPad>1</KeyPad>
-        <KeyPad>2</KeyPad>
-        <KeyPad>3</KeyPad>
-        <KeyPad style={{ backgroundColor: "#109DFF" }}>
+        <KeyPad onClick={() => handleValChange(1)}>1</KeyPad>
+        <KeyPad onClick={() => handleValChange(2)}>2</KeyPad>
+        <KeyPad onClick={() => handleValChange(3)}>3</KeyPad>
+        <KeyPad
+          onClick={() => setAnswer(val)}
+          style={{ backgroundColor: "#109DFF" }}
+        >
           <svg
             width="18"
             height="11"
@@ -196,8 +210,8 @@ function App() {
             />
           </svg>
         </KeyPad>
-        <KeyPad>0</KeyPad>
-        <KeyPad>.</KeyPad>
+        <KeyPad onClick={() => handleValChange(0)}>0</KeyPad>
+        <KeyPad onClick={() => handleValChange(".")}>.</KeyPad>
         {/* <KeyPad></KeyPad> */}
       </KeyPadContainer>
     </Container>

@@ -22,6 +22,7 @@ export const CalcScreen = styled.div`
 export const CalcVal = styled.div`
   margin-block: 5px;
   color: #818181;
+  height: 20px;
 `;
 export const CalcAns = styled.div`
   font-weight: bolder;
@@ -51,4 +52,5 @@ export const KeyPad = styled.div`
   border-radius: 16px;
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
 `;
