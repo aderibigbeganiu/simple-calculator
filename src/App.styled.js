@@ -42,6 +42,9 @@ export const KeyPad = styled.div`
   width: 60px;
   height: 60px;
   background-color: #ffffff;
+  color: #38B9FF;
+  font-weight: bolder;
+  font-size: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
